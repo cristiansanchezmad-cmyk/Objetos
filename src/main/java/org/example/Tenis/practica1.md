@@ -11,8 +11,12 @@
 6. [Entregas](https://github.com/cristiansanchezmad-cmyk/Objetos/new/main/src/main/java/org/example/Tenis#5-entregas)
 
 ### 1.Intro
-La practica consiste en objetos
+> La practica consiste en objetos
 ### 2. Estructura de clases
+#### Diagrama de clases UML
+![]()
+#### Codigo de PlantUML
+#### Contenido de las clases (.java)
 ### 3. Programa Principal (InmobiliariaApp)
 ### 4. Pruebas
 ### 5. Entregas
