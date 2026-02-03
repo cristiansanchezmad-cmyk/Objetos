@@ -1,0 +1,73 @@
+@startuml
+
+
+
+@startuml
+
+package "biblio" {
+
+    class Estudiante {
+        - static CORREO_FORMAT : String
+        - static contadorEstudiantes : int
+        - nombre : String
+        - curso : String
+        - nia : int
+        - email : String
+        - libro : Libro
+
+        + Estudiante(nombre : String, curso : String, email : String)
+        + Estudiante(nombre : String)
+        + ObetenerTotalEstudiantes() : int
+        + validadCorreo(correo : String) : boolean
+        + setNia()
+        + toString() : String
+    }
+
+    class Libro {
+        - static DEF_LIBRO_PRESTADO : int
+        - static DEF_LIBRO_SIN_PRESTAR : int
+        - static contadorLibrosDisponibles : int
+        - static contadorCantidadLibros : int
+        - static CADENA_ID : String
+        - id : String
+        - titulo : String
+        - autor : String
+        - disponible : boolean
+        - cantidadLibros : int
+        - librosDisponibles : int
+        - editorial : Editorial
+        - estudiantePrestado : Estudiante
+
+        + Libro(titulo : String, autor : String, editorial : Editorial)
+        - calcularId() : String
+        + prestar(estudiante : Estudiante) : Prestamo
+        + devolver()
+        + Disponible() : boolean
+        + toString() : String
+    }
+
+    class Prestamo {
+        - libro : Libro
+        - estudiante : Estudiante
+        - fecha : LocalDateTime
+
+        + Prestamo(libro : Libro, estudiante : Estudiante)
+        + toString() : String
+    }
+
+    class Editorial {
+    }
+
+    ' Relaciones
+    Estudiante "1" -- "*" Libro : >
+    Libro "*" -- "1" Editorial : pertenece a >
+    Prestamo "1" o--> "1" Libro
+    Prestamo "1" o--> "1" Estudiante
+}
+
+@enduml
+
+
+@enduml
+
+
