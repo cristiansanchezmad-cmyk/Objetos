@@ -14,7 +14,7 @@
 > La practica consiste en objetos
 ### 2. Estructura de clases
 #### Diagrama de clases UML
-![]()
+![](img/biblio.png)
 #### Codigo de PlantUML
 #### Contenido de las clases (.java)
 ### 3. Programa Principal (InmobiliariaApp)
