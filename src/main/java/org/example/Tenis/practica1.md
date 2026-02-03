@@ -11,6 +11,7 @@
 6. [Entregas](https://github.com/cristiansanchezmad-cmyk/Objetos/new/main/src/main/java/org/example/Tenis#5-entregas)
 
 ### 1.Intro
+La practica consiste en objetos
 ### 2. Estructura de clases
 ### 3. Programa Principal (InmobiliariaApp)
 ### 4. Pruebas
