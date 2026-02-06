@@ -1,35 +1,43 @@
 package org.example.Practica_1;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Empleado {
-    private static int contadorEmpleados=0;
+
+
+
+    private static final String GenerarID="EP";
+    private static int ContadorID=1;
     private String nombre;
     private String cargo;
-    private static final String CADENA="EP00";
-    private Empleado director=null;
+    private Empleado director;
+    private String id;
 
+    public Empleado(String nombre, String cargo, Empleado empleado){
 
-    public Empleado(String nombre, String cargo){
         this.nombre=nombre;
-        this.cargo=cargo;
-        contadorEmpleados++;
+        setCargo(cargo);
+        if (this.cargo.equals("director")){
+            this.director=null;
+        }
+        setId();
     }
 
-    private String calcularID(){
-        return CADENA+contadorEmpleados;
-    }
-    public Empleado getDirector() {
-        return director;
+    public String getId() {
+        return id;
     }
 
-    public void setDirector(Empleado director) {
-        this.director = director;
+    public void setId() {
+        this.id=GenerarID+ContadorID++;
+
     }
-    public static int getContadorEmpleados() {
-        return contadorEmpleados;
+    public static int getContadorID() {
+        return ContadorID;
     }
 
-    public static void setContadorEmpleados(int contadorEmpleados) {
-        Empleado.contadorEmpleados = contadorEmpleados;
+    public static void setContadorID(int contadorID) {
+        ContadorID = contadorID;
     }
 
     public String getNombre() {
@@ -45,7 +53,31 @@ public class Empleado {
     }
 
     public void setCargo(String cargo) {
-        this.cargo = cargo;
+        List<String> cargosValidos= Arrays.asList(
+
+                "director", "técnico", "presentador", "colaborador"
+
+        );
+
+        if (cargosValidos.contains(cargo)){
+            this.cargo=cargo;
+
+
+
+        }else{
+            this.cargo="pte";
+        }
+
+    }
+
+
+
+    public Empleado getDirector() {
+        return director;
+    }
+
+    public void setDirector(Empleado director) {
+        this.director = director;
     }
 
     @Override
@@ -53,10 +85,10 @@ public class Empleado {
         return "Empleado{" +
                 "nombre='" + nombre + '\'' +
                 ", cargo='" + cargo + '\'' +
+                ", director=" + director +
+                ", id='" + id + '\'' +
                 '}';
     }
-
-
 
 
 }

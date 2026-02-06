@@ -1,0 +1,94 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+@startuml
+
+package Practica_1 {
+
+class Cadena {
+    - nombre : String
+    - listaProgramas : ArrayList<Programa>
+    - fecha_primera : LocalDate
+    --
+    + Cadena(nombre : String)
+    + añadirPrograma(p : Programa) : void
+    + invitadoAntes(nombreInvitado : String) : void
+    + getNombre() : String
+    + setNombre(nombre : String) : void
+    + getListaProgramas() : ArrayList<Programa>
+    + setListaProgramas(lista : ArrayList<Programa>) : void
+}
+
+class Programa {
+    - nombre : String
+    - cadena : Cadena
+    - temporadas : int
+    - listaEmpleados : ArrayList<Empleado>
+    - listaInvitados : ArrayList<Invitado>
+    - director : Empleado
+    --
+    + Programa(nombre : String, cadena : Cadena, director : String)
+    + crearEmpleado(nombre : String, cargo : String, director : Empleado) : void
+    + crearEmpleados(nombre : String, cargo : String) : void
+    + crearInvitado(nombre : String, profesion : String, temporada : int, fecha : LocalDate) : void
+    + crearInvitados(nombre : String, profesion : String, temporadas : int, fecha : LocalDate) : void
+    + invitadosTemporada(temporadas : int) : void
+    + vecesInvitado(nombre : String) : int
+    + rastrearInvitado(nombre : String) : void
+    + buscarInvitado(nombre : String) : boolean
+    + getNombre() : String
+    + setNombre(nombre : String) : void
+    + getCadena() : Cadena
+    + setCadena(cadena : Cadena) : void
+}
+
+class Empleado {
+    - nombre : String
+    - cargo : String
+    - director : Empleado
+    - id : String
+    --
+    {static} GenerarID : String
+    {static} ContadorID : int
+    --
+    + Empleado(nombre : String, cargo : String, empleado : Empleado)
+    + getId() : String
+    + setId() : void
+    + getNombre() : String
+    + setNombre(nombre : String) : void
+    + getCargo() : String
+    + setCargo(cargo : String) : void
+    + getDirector() : Empleado
+    + setDirector(director : Empleado) : void
+}
+
+class Invitado {
+    - nombre : String
+    - profesion : String
+    - fecha_visita : LocalDate
+    - temporada : int
+    --
+    + Invitado(nombre : String, profesion : String, temporada : int, fecha_visita : LocalDate)
+    + getNombre() : String
+    + setNombre(nombre : String) : void
+    + getProfesion() : String
+    + setProfesion(profesion : String) : void
+    + getFecha_visita() : LocalDate
+    + setFecha_visita() : void
+    + getTemporada() : int
+    + setTemporada(temporada : int) : void
+}
+
+' Relaciones
+Cadena "1" o-- "*" Programa : contiene
+Programa "1" o-- "*" Empleado : emplea
+Programa "1" o-- "*" Invitado : invita
+Empleado "0..1" --> "1" Empleado : director
+
+}
+
+@enduml
+
+@enduml
